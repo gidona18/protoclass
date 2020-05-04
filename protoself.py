@@ -4,4 +4,5 @@ def make(**kwargs):
     obj.__dict__ = kwargs
     return obj
 
-print(make(name='self'))
+orenji = make(name='orenji', color='#FFA500')
+print(orenji.__dict__)
