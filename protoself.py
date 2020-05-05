@@ -74,8 +74,23 @@ print(apple)
 """
 
 class Prototype:
-    def __init__(self, __dict, __link=None):
-        self.__dict__ = __dict.copy()
+    "..."
+    def __init__(self, __dict, __link, __mode):
+        self.__dict__ = __dict
+        self.__link = __link
+        self.__mode = __mode
+
+    """
+    def __setattr__(self, name, data):
+        if self.__link is None:
+            self.__dict__[name] = data
+        else:
+            self.__link = None
+            """
+
+
+
+# ---------------------------------------------------------------------
 
     def __repr__(self):
         try: return self.repr(self)
@@ -91,16 +106,19 @@ class Prototype:
 
 
 def make(**kwargs):
-    return Prototype(kwargs)
+    return Prototype(kwargs, None, None)
 
 def link(this, that):
     return Prototype(this.__dict__, that)
 
-def copy(this, that):
+#def link(this, that):
+#    return Prototype(this.__dict__, that)
+
+#def copy(this, that):
     # TODO: implement COW
-    this_dict = deepcopy(that.__dict__)
-    this_dict.update(this.__dict__)
-    return Prototype(this_dict)
+#    this_dict = deepcopy(that.__dict__)
+#    this_dict.update(this.__dict__)
+#    return Prototype(this_dict)
 
 #orenji = make({'name':'orenji'})
 orenji = make(name='orenji', color='11')
@@ -108,8 +126,8 @@ orenji.str = lambda self:\
     f"\u001b[38;5;{self.color}m{self.name}\u001b[0m"
 print(orenji)
 
-aka = copy(make(color='9'), orenji)
-print(aka)
+#aka = copy(make(color='9'), orenji)
+#print(aka)
 
 #print(orenji.__dict__)
 
