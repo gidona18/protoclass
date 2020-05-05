@@ -38,6 +38,25 @@ class Test(unittest.TestCase):
         self.assertEqual(orenji.jp, 'オレンジ')
         self.assertEqual(fruit.jp, 'フルーツ')
 
+    def test_copy(self):
+        # check basic propagation
+        fruit = pt.make(type='fruit')
+        orenji = pt.make(name='orenji', color='214')
+        orenji = pt.copy(orenji, fruit)
+        self.assertEqual(orenji.type, 'fruit')
+        # from now on, changes in parents do not affect children
+        fruit.jp = 'フルーツ'
+        self.assertEqual(fruit.jp, 'フルーツ')
+        try:
+            orenji.jp;
+            self.assertTrue(False)
+        except AttributeError:
+            self.assertTrue(True)
+        # and as always, children do not affect parents
+        orenji.jp = 'オレンジ'
+        self.assertEqual(orenji.jp, 'オレンジ')
+        self.assertEqual(fruit.jp, 'フルーツ')
+
 
 if __name__ == '__main__':
     unittest.main()
