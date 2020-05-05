@@ -85,7 +85,7 @@ class __Prototype:
             if name in attr.__dict__:
                 return attr.__dict__[name]
             attr = attr.__link
-        exn = f"object '{hex(id(self))}' has no attribute '{name}'"
+        exn = f"<object '{hex(id(self))}'> object has no attribute '{name}'"
         raise AttributeError(exn)
 
 
