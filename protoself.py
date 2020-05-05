@@ -8,15 +8,15 @@ class Pt:
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
 
-    def __str__(self):
-        try:
-            return str(self)
-        except:
-            print("OHNO")
-        return str(self.__dict__)
+    #def __str__(self):
+    #    try:
+    #        return str(self)
+    #    except:
+    #        print("OHNO")
+    #    return str(self.__dict__)
 
     def __setattr__(self, name, data):
-        self.__dict__[name] = data
+        print(repr(data))
 
 mikan = Pt(name='mikan', color='214')
 mikan.str = lambda : f"\u001b[38;5;214m{self.name}\u001b[0m"
