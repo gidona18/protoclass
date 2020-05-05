@@ -25,6 +25,9 @@ def copy(dst, src):
     # TODO: implement copy on write
     return Prototype(**deepcopy(src.__dict__))
 
+def link(dst, src):
+    return Prototype(**src.__dict__)
+
 
 """
 
@@ -56,6 +59,12 @@ apple.color = '9'
 print(repr(apple))
 print(str(apple))
 print()
+
+gapple = link(make(), apple)
+gapple.color = '10'
+print(gapple)
+print(apple)
+# not working...
 
 #mikan = make
 
