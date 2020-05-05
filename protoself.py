@@ -1,18 +1,20 @@
-def make(**kwargs):
-    "..."
-    obj = type('',(object,),{})()
-    obj.__dict__.update(kwargs)
-    return obj
-
-class Pt:
+class Prototype:
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
 
+# ---------------------------------------------------------------------
+
+    def __repr__(self):
+        try: return self.repr(self)
+        except AttributeError: return repr(self.__dict__)
+
     def __str__(self):
-        try:
-            return self.str(self)
-        except AttributeError:
-            return str(self.__dict__)
+        try: return self.str(self)
+        except AttributeError: return str(self.__dict__)
+
+    def __bytes__(self):
+        try: return self.bytes(self)
+        except AttributeError: return bytes(self.__dict__)
 
 """
 
@@ -21,7 +23,7 @@ def mikan
 
 """
 
-mikan = Pt(name='mikan', color='214')
+mikan = Prototype(name='mikan', color='214')
 mikan.str = lambda self : f"\u001b[38;5;214m{self.name}\u001b[0m"
 
 print(mikan)
