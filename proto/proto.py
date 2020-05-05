@@ -31,6 +31,9 @@ class Proto:
 
 # ---------------------------------------------------------------------
 
+    def __str__(self, name):
+        try: return self.__str__()
+        except AttributeError: return self.__dict__.str()
 
 
 mikan = Proto(name='mikan', color='11')
@@ -48,3 +51,5 @@ print(mikan.name, mikan.color)
 print(orenji.name, orenji.color)
 print(tomato.name, tomato.color)
 print()
+
+print(mikan)
