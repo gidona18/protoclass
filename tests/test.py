@@ -1,8 +1,8 @@
-from unittest import TestCase
+import unittest
 
 import protobj as pt
 
-class Test(TestCase):
+class Test(unittest.TestCase):
     def test_make(self):
         orenji = pt.make(name='orenji', color='214')
         self.assertEqual(orenji.name == 'orenji')
