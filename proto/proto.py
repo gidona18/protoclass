@@ -17,6 +17,35 @@ class Proto:
         self.__dict__.update(kwargs)
         self.__link = None
 
+    def __getattr__(self, name):
+        attr = self
+        while attr:
+            if name in attr.__dict__:
+                return attr.__dict__[name]
+            attr = attr.__link
+        exn = "<proto object at {}> has no attribute '{}'>"
+        raise AttributeError(exn.format(hex(id(self)), name))
+
+    def __str__(self):
+        try:
+            return self.str(self)
+        except AttributeError:
+            return str(self.__dict__)
+
+    def __repr__(self):
+        try:
+            return self.repr(self)
+        except AttributeError:
+            return repr(self.__dict__)
+
+    def __bytes__(self):
+        try:
+            return self.bytes(self)
+        except AttributeError:
+            return bytes(self.__dict__)
+
+    # -----------------------------------------------------------------
+
     def link(self, other):
         self.__link = other
         return self
@@ -32,42 +61,6 @@ class Proto:
 
     # -----------------------------------------------------------------
 
-    def __setattr__(self, name, data):
-        if type(data) == self.__functype:
-            for p in signature(data).parameters:
-                if p == 'self':
-                    data = partial(data, self)  # methodize
-                break
-        self.__dict__[name] = data
-
-    def __getattr__(self, name):
-        attr = self
-        while attr:
-            if name in attr.__dict__:
-                return attr.__dict__[name]
-            attr = attr.__link
-        exn = "<proto object at {}> has no attribute '{}'>"
-        raise AttributeError(exn.format(hex(id(self)), name))
-
-    # -----------------------------------------------------------------
-
-    def __str__(self):
-        try:
-            return self.str()
-        except AttributeError:
-            return str(self.__dict__)
-
-    def __repr__(self):
-        try:
-            return self.repr()
-        except AttributeError:
-            return repr(self.__dict__)
-
-    def __bytes__(self):
-        try:
-            return self.bytes()
-        except AttributeError:
-            return bytes(self.__dict__)
 
 
 """
@@ -89,7 +82,7 @@ print()
 """
 
 mikan = Proto(name="mikan", color="11")
-print(mikan)
+#print(mikan)
 
 mikan.str = lambda self : self.name
-print(mikan)
+print(mikan.name)
