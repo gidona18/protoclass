@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 class Prototype:
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
@@ -19,6 +21,11 @@ class Prototype:
 def make(**kwargs):
     return Prototype(**kwargs)
 
+def copy(dst, src):
+    # TODO: implement copy on write
+    return Prototype(**deepcopy(src.__dict__))
+
+
 """
 
 @attr(mikan, __str__)
@@ -32,14 +39,23 @@ mikan.str = lambda self : \
 
 print(repr(mikan))
 print(str(mikan))
+print()
 
-fruit = make(name='fruit',color='0')
+fruit = make(name='fruit',color='15')
 fruit.str = lambda self : \
     f"\u001b[38;5;{self.color}m{self.name}\u001b[0m"
 
 print(repr(fruit))
 print(str(fruit))
+print()
 
+apple = make()
+apple = copy(apple, fruit)
+apple.name = 'apple'
+apple.color = '9'
+print(repr(apple))
+print(str(apple))
+print()
 
 #mikan = make
 
