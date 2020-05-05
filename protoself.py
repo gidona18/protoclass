@@ -73,16 +73,27 @@ print(apple)
 
 """
 
-class Prototype:
+pset = set([f'_Prototype__{attr}' for attr in ['dict','link']])
+class __Prototype:
     "..."
-    def __init__(self, __dict, __link, __mode):
-        self.__dict__ = __dict
-        self.__link = __link
-        self.__mode = __mode
+    def __init__(self, dict, link=None):
+        self.dict = dict
+        self.link = link
 
     def __setattr__(self, name, data):
-        if self.__link is None:
+        if pset <= set(self.__dict__):
+            self.dict[name] = data
+        else:
             self.__dict__[name] = data
+
+    def __getattr__(self, name):
+        attr = self
+        while attr:
+            if name in attr.dict:
+                return attr.dict[name]
+            else:
+                attr = attr.link
+        raise AttributeError(f"{self} object has no attribute '{name}'")
 
 
 
@@ -102,7 +113,7 @@ class Prototype:
 
 
 def make(**kwargs):
-    return Prototype(kwargs, None, None)
+    return __Prototype(kwargs)
 
 def link(this, that):
     return Prototype(this.__dict__, that)
@@ -121,6 +132,7 @@ orenji = make(name='orenji', color='11')
 orenji.str = lambda self:\
     f"\u001b[38;5;{self.color}m{self.name}\u001b[0m"
 print(orenji)
+print(orenji.name)
 
 #aka = copy(make(color='9'), orenji)
 #print(aka)
