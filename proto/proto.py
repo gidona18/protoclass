@@ -10,9 +10,9 @@ class Proto:
         return self
 
     def copy(self, other):
-        self_dict = deepcopy(other.__dict__)
-        self_dict.update(sefl.__dict__)
-        sefl.__dict__ = self_dict
+        #self_dict = deepcopy(other.__dict__)
+        #self_dict.update(sefl.__dict__)
+        #sefl.__dict__ = self_dict
         return self
 
 # ---------------------------------------------------------------------
