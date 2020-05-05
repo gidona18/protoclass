@@ -9,10 +9,13 @@ class Proto:
         self.__link = other
         return self
 
-    def copy(self, other):
-        #self_dict = deepcopy(other.__dict__)
-        #self_dict.update(sefl.__dict__)
-        #sefl.__dict__ = self_dict
+    def move(self, other):
+        attr = other
+        while attr:
+            for key in attr.__dict__:
+                if key not in self.__dict__:
+                    self.__dict__[key] = deepcopy(attr.__dict__[key])
+            attr = attr.__link
         return self
 
 # ---------------------------------------------------------------------
@@ -39,9 +42,9 @@ print(orenji.name, orenji.color)
 print(mikan.name, mikan.color)
 print()
 
-#tomato = Proto(name='tomato').copy(orenji)
+tomato = Proto(name='tomato').move(orenji)
 mikan.color = '9'
 print(mikan.name, mikan.color)
 print(orenji.name, orenji.color)
-#print(tomato.name, tomato.color)
+print(tomato.name, tomato.color)
 print()
