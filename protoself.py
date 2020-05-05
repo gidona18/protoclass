@@ -1,5 +1,7 @@
 from copy import deepcopy
 
+"""
+
 class Prototype:
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
@@ -29,12 +31,9 @@ def link(dst, src):
     return Prototype(**src.__dict__)
 
 
-"""
 
 @attr(mikan, __str__)
 def mikan
-
-"""
 
 mikan = make(name='mikan', color='214')
 mikan.str = lambda self : \
@@ -71,3 +70,46 @@ print(apple)
 #mikan = make(name='mikan', color='#ffaf00')
 #print(mikan.__dict__)
 #print(str(mikan))
+
+"""
+
+class Prototype:
+    def __init__(self, __dict, __link=None):
+        self.__dict__ = __dict.copy()
+
+    def __repr__(self):
+        try: return self.repr(self)
+        except AttributeError: return repr(self.__dict__)
+
+    def __str__(self):
+        try: return self.str(self)
+        except AttributeError: return str(self.__dict__)
+
+    def __bytes__(self):
+        try: return self.bytes(self)
+        except AttributeError: return bytes(self.__dict__)
+
+
+def make(**kwargs):
+    return Prototype(kwargs)
+
+def link(this, that):
+    return Prototype(this.__dict__, that)
+
+def copy(this, that):
+    # TODO: implement COW
+    this_dict = deepcopy(that.__dict__)
+    this_dict.update(this.__dict__)
+    return Prototype(this_dict)
+
+#orenji = make({'name':'orenji'})
+orenji = make(name='orenji', color='11')
+orenji.str = lambda self:\
+    f"\u001b[38;5;{self.color}m{self.name}\u001b[0m"
+print(orenji)
+
+aka = copy(make(color='9'), orenji)
+print(aka)
+
+#print(orenji.__dict__)
+
