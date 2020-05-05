@@ -16,6 +16,9 @@ class Prototype:
         try: return self.bytes(self)
         except AttributeError: return bytes(self.__dict__)
 
+def make(**kwargs):
+    return Prototype(**kwargs)
+
 """
 
 @attr(mikan, __str__)
@@ -23,10 +26,22 @@ def mikan
 
 """
 
-mikan = Prototype(name='mikan', color='214')
-mikan.str = lambda self : f"\u001b[38;5;214m{self.name}\u001b[0m"
+mikan = make(name='mikan', color='214')
+mikan.str = lambda self : \
+    f"\u001b[38;5;{self.color}m{self.name}\u001b[0m"
 
-print(mikan)
+print(repr(mikan))
+print(str(mikan))
+
+fruit = make(name='fruit',color='0')
+print(fruit)
+fruit.str = lambda self : \
+    f"\u001b[38;5;{self.color}m{self.name}\u001b[0m"
+print(fruit)
+
+
+
+#mikan = make
 
 #mikan = make(name='mikan', color='#ffaf00')
 #print(mikan.__dict__)
