@@ -73,7 +73,6 @@ print(apple)
 
 """
 
-pset = set([f'_Prototype__{attr}' for attr in ['dict','link']])
 class __Prototype:
     "..."
     def __init__(self, __dict, __link=None):
@@ -86,7 +85,8 @@ class __Prototype:
             if name in attr.__dict__:
                 return attr.__dict__[name]
             attr = attr.__link
-        #raise AttributeError(f"{self} object has no attribute '{name}'")
+        exn = f"object '{hex(id(self))}' has no attribute '{name}'"
+        raise AttributeError(exn)
 
 
 
@@ -130,6 +130,7 @@ print(orenji.name)
 aka = link(make(color='9'), orenji)
 print(aka)
 print(orenji)
+print(aka.maru)
 
 #print(orenji.__dict__)
 
