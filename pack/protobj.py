@@ -53,14 +53,17 @@ class __Proto:
 
 
 def make(**kwargs):
+    "..."
     return __Proto(kwargs)
 
 
 def link(this, that):
+    "..."
     return __Proto(this.__dict__, that)
 
 
 def copy(this, that):
+    "..."
     this_dict = deepcopy(that.__dict__)
     this_dict.update(this.__dict__)
     return __Proto(this_dict)
