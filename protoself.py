@@ -76,24 +76,17 @@ print(apple)
 pset = set([f'_Prototype__{attr}' for attr in ['dict','link']])
 class __Prototype:
     "..."
-    def __init__(self, dict, link=None):
-        self.dict = dict
-        self.link = link
-
-    def __setattr__(self, name, data):
-        if pset <= set(self.__dict__):
-            self.dict[name] = data
-        else:
-            self.__dict__[name] = data
+    def __init__(self, __dict, __link=None):
+        self.__dict__ = __dict
+        self.__link = __link
 
     def __getattr__(self, name):
         attr = self
         while attr:
-            if name in attr.dict:
-                return attr.dict[name]
-            else:
-                attr = attr.link
-        raise AttributeError(f"{self} object has no attribute '{name}'")
+            if name in attr.__dict__:
+                return attr.__dict__[name]
+            attr = attr.__link
+        #raise AttributeError(f"{self} object has no attribute '{name}'")
 
 
 
@@ -116,7 +109,7 @@ def make(**kwargs):
     return __Prototype(kwargs)
 
 def link(this, that):
-    return Prototype(this.__dict__, that)
+    return __Prototype(this.__dict__, that)
 
 #def link(this, that):
 #    return Prototype(this.__dict__, that)
@@ -136,6 +129,7 @@ print(orenji.name)
 
 aka = link(make(color='9'), orenji)
 print(aka)
+print(orenji)
 
 #print(orenji.__dict__)
 
