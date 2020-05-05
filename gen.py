@@ -114,13 +114,17 @@ str
 bytes
 """
 
+
 def make_code(source):
     funs = source.split()
     for f in funs:
-        print(f"""\
+        print(
+            f"""\
 def __{f}__(self):
     try: return self.{f}(self)
     except AttributeError: return {f}(self.__dict__)
-""")
+"""
+        )
+
 
 make_code(now)

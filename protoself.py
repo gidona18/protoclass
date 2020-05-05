@@ -73,8 +73,10 @@ print(apple)
 
 """
 
+
 class __Prototype:
     "..."
+
     def __init__(self, __dict, __link=None):
         self.__dict__ = __dict
         self.__link = __link
@@ -88,56 +90,61 @@ class __Prototype:
         exn = f"<object '{hex(id(self))}'> object has no attribute '{name}'"
         raise AttributeError(exn)
 
-
-
-# ---------------------------------------------------------------------
+    # ---------------------------------------------------------------------
 
     def __repr__(self):
-        try: return self.repr(self)
-        except AttributeError: return repr(self.__dict__)
+        try:
+            return self.repr(self)
+        except AttributeError:
+            return repr(self.__dict__)
 
     def __str__(self):
-        try: return self.str(self)
-        except AttributeError: return str(self.__dict__)
+        try:
+            return self.str(self)
+        except AttributeError:
+            return str(self.__dict__)
 
     def __bytes__(self):
-        try: return self.bytes(self)
-        except AttributeError: return bytes(self.__dict__)
+        try:
+            return self.bytes(self)
+        except AttributeError:
+            return bytes(self.__dict__)
 
 
 def make(**kwargs):
     return __Prototype(kwargs)
 
+
 def link(this, that):
     return __Prototype(this.__dict__, that)
+
 
 def copy(this, that):
     this_dict = deepcopy(that.__dict__)
     this_dict.update(this.__dict__)
     return __Prototype(this_dict)
 
-#orenji = make({'name':'orenji'})
-orenji = make(name='orenji', color='11')
-orenji.str = lambda self:\
-    f"\u001b[38;5;{self.color}m{self.name}\u001b[0m"
+
+# orenji = make({'name':'orenji'})
+orenji = make(name="orenji", color="11")
+orenji.str = lambda self: f"\u001b[38;5;{self.color}m{self.name}\u001b[0m"
 print(orenji)
 print(orenji.name)
 
-aka = link(make(color='9'), orenji)
+aka = link(make(color="9"), orenji)
 print(aka)
 print(orenji)
 print(aka)
 
-midori = copy(make(color='10'), orenji)
+midori = copy(make(color="10"), orenji)
 print(midori)
 
-orenji.str = lambda _ : "ORENJI"
+orenji.str = lambda _: "ORENJI"
 print(aka)
 
-aka.str = lambda _ : "AKA ORENJI"
+aka.str = lambda _: "AKA ORENJI"
 print(aka)
 print(orenji)
 print(midori)
 
-#print(orenji.__dict__)
-
+# print(orenji.__dict__)
