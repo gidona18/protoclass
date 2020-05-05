@@ -130,7 +130,14 @@ print(orenji.name)
 aka = link(make(color='9'), orenji)
 print(aka)
 print(orenji)
-print(aka.maru)
+print(aka)
+
+orenji.str = lambda _ : "ORENJI"
+print(aka)
+
+aka.str = lambda _ : "AKA ORENJI"
+print(aka)
+print(orenji)
 
 #print(orenji.__dict__)
 
