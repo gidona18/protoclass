@@ -80,13 +80,9 @@ class Prototype:
         self.__link = __link
         self.__mode = __mode
 
-    """
     def __setattr__(self, name, data):
         if self.__link is None:
             self.__dict__[name] = data
-        else:
-            self.__link = None
-            """
 
 
 
