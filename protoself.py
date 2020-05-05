@@ -134,8 +134,8 @@ orenji.str = lambda self:\
 print(orenji)
 print(orenji.name)
 
-#aka = copy(make(color='9'), orenji)
-#print(aka)
+aka = link(make(color='9'), orenji)
+print(aka)
 
 #print(orenji.__dict__)
 
