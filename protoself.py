@@ -34,11 +34,11 @@ print(repr(mikan))
 print(str(mikan))
 
 fruit = make(name='fruit',color='0')
-print(fruit)
 fruit.str = lambda self : \
     f"\u001b[38;5;{self.color}m{self.name}\u001b[0m"
-print(fruit)
 
+print(repr(fruit))
+print(str(fruit))
 
 
 #mikan = make
