@@ -1,4 +1,4 @@
-from copy import deepcopy
+# ---------------------------------------------------------------------
 
 class Proto:
     def __init__(self, **kwargs):
@@ -14,7 +14,7 @@ class Proto:
         while attr:
             for key in attr.__dict__:
                 if key not in self.__dict__:
-                    self.__dict__[key] = deepcopy(attr.__dict__[key])
+                    self.__dict__[key] = attr.__dict__[key]
             attr = attr.__link
         return self
 
