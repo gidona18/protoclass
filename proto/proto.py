@@ -2,12 +2,15 @@
 
 
 from functools import partial
+from inspect import signature
 
 
 # ---------------------------------------------------------------------
 
 
 class Proto:
+    "..."
+
     __functype = type(lambda: None)
 
     def __init__(self, **kwargs):
@@ -27,12 +30,14 @@ class Proto:
             attr = attr.__link
         return self
 
-    # ---------------------------------------------------------------------
+    # -----------------------------------------------------------------
 
     def __setattr__(self, name, data):
-        if self.__functype == type(data):
-            data = partial(data, self)
-
+        if type(data) == self.__functype:
+            for p in signature(data).parameters:
+                if p == 'self':
+                    data = partial(data, self)  # methodize
+                break
         self.__dict__[name] = data
 
     def __getattr__(self, name):
@@ -44,7 +49,7 @@ class Proto:
         exn = "<proto object at {}> has no attribute '{}'>"
         raise AttributeError(exn.format(hex(id(self)), name))
 
-    # ---------------------------------------------------------------------
+    # -----------------------------------------------------------------
 
     def __str__(self):
         try:
@@ -86,5 +91,5 @@ print()
 mikan = Proto(name="mikan", color="11")
 print(mikan)
 
-mikan.str = lambda self: "MIKAN!"
+mikan.str = lambda self : self.name
 print(mikan)
