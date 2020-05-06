@@ -11,7 +11,6 @@ Installation
 
 Usage
 -----
-
 ```Python
 from classless import proto
 
@@ -35,7 +34,6 @@ jane.greet()
 
 API Reference
 -------------
-
 | | |
 | --- | --- |
 | `proto(**kwargs)` | Make a new prototype object with the given attributes. If no properties are given, and empty prototype will be created. The latter is useful when only a clone of another object is needed. |
