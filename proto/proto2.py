@@ -1,14 +1,21 @@
+from inspect import signature
 from types import MethodType
 
 def __soft(self, other):
     pass
 
 def __hard(self, other):
-    class prot(other):
+    class prot:
         def __init__(self):
             pass
+        
+        def __setattr__(self, name, data):
+            return setattr(type(self), name, data)
+        
         def __getattr__(self, name):
-            return "OHNO"
+            return getattr(type(self), name)
+
+    prot = type('prot', (type(other),), prot.__dict__.copy())
     return prot()
 
 def prot(**kwargs):
@@ -23,9 +30,7 @@ def prot(**kwargs):
         def __getattr__(self, name):
             return getattr(type(self), name)
         
-        def hard(self, other):
-            return __hard(self, other)
-    
+    setattr(prot, 'hard', MethodType(__hard, prot))
     return prot(kwargs)
 
 
@@ -38,4 +43,7 @@ john = prot(name='john')
 print(jude.name)
 
 j = prot().hard(jude)
+print(j.name)
+j.name = 'anata'
+print(jude.name)
 print(j.name)
