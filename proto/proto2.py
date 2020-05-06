@@ -18,7 +18,7 @@ def __soft(self, other):
     pass
 
 
-def __hard(self, other):
+def __link(self, other):
     class prot:
         def __init__(self):
             pass
@@ -44,22 +44,20 @@ def prot(**kwargs):
         def __getattr__(self, name):
             return getattr(type(self), name)
         
-    setattr(prot, 'hard', MethodType(__hard, prot))
+    setattr(prot, 'link', MethodType(__link, prot))
     return prot(kwargs)
 
 
 
 
-
 jude = prot(name='jude')
-john = prot(name='john')
-jude.age = 21
-print(jude.name)
+jay = prot().link(jude)
+print(jay.name)
 
-j = prot().hard(jude)
-print(j.name)
-j.name = 'anata'
+jude.name = 'jude2'
+print(jay.name)
+
+jay.name = 'jay'
+jude.name = 'jude'
 print(jude.name)
-print(j.name)
-print()
-print(j.age)
+print(jay.name)
