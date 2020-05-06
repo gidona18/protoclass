@@ -7,7 +7,7 @@ class __proto:
         return setattr(type(self), name, value)
 
 def proto(**kwargs):
-    return type('proto', (__proto), kwargs.copy())
+    return type('proto', (__proto,), kwargs.copy())()
 
 # ---------------------------------------------------------------------
 #
@@ -16,12 +16,12 @@ def proto(**kwargs):
 import unittest
 
 class TestCase(unittest.TestCase):
-    def single_proto(self):
+    def test_single(self):
         # members
         mikan = proto(name='mikan')
         self.assertEqual(mikan.name, 'mikan')
         mikan.color = 'orange'
-        self.assertEqual(mikan.color, 'color')
+        self.assertEqual(mikan.color, 'orange')
         mikan.type = 'fruit'
         self.assertEqual(mikan.type, 'fruit')
         # methods
