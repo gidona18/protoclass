@@ -11,7 +11,7 @@ class __proto:
 
 
 def proto(**kwargs):
-    return type("proto", (__proto,), kwargs.copy())()
+    return type('proto', (__proto,), kwargs.copy())()
 
 
 # ---------------------------------------------------------------------

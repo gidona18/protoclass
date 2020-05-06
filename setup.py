@@ -17,11 +17,6 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.0',
     ],
-    #keywords='TODO',
-    #...
-    #zip_safe=True,
-    #python_requires='3.8',
-    #test_suite='TestProto',
     author='Armando Herrera',
     author_email='[email protected]',
 )
