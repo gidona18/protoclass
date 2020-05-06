@@ -11,17 +11,10 @@ class __prot:
 # ---------------------------------------------------------------------
 
 def link(self, other):
-    class prot:
-        def __init__(self, __dict):
-            for name in __dict:
-                setattr(type(self), name, __dict[name])
-        def __setattr__(self, name, data):
-            return setattr(type(self), name, data)
-        
-        def __getattr__(self, name):
-            return getattr(type(self), name)
-
-    prot(type(self).__dict__)
+    prot_dict = {}
+    
+    print(getattr(type(self), '__prot_keys'))
+    #prot_dict[key] = type(self).__dict__[key]
     prot = type('prot', (type(other),), prot.__dict__.copy())
     return prot()
 
@@ -44,8 +37,10 @@ def dupe(self, other):
 def prot(**kwargs):
     class prot:
         def __init__(self, __dict):
+            setattr(type(self), '__prot_keys', __dict.keys())
             for name in __dict:
                 setattr(type(self), name, __dict[name])
+
         def __setattr__(self, name, data):
             return setattr(type(self), name, data)
         
@@ -54,7 +49,7 @@ def prot(**kwargs):
             
     setattr(prot, 'link', MethodType(link, prot))
     setattr(prot, 'dupe', MethodType(dupe, prot))
-    setattr(prot, '__prot_link', None)
+    #setattr(prot, '__prot_link', None)
     return prot(kwargs)
 
 
