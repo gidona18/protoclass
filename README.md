@@ -1,41 +1,26 @@
-# Protobj
+classless
+=========
+Prototype-Oriented Programming in Python
+----------------------------------------
 
 ```Python
-import protobj as pt
+from clasless import proto
 
+# We create a basic object and add some functionality
+jane = proto(first='Jane', last='Doe')
+jane.greet = lambda self: print(self)
+jane.greet()
+# >>> <proto object at 0x7fe062ebdf10>
 
-# we create a simple object
-orange = pt.make(name='orange', color='214')
+# Oh no, we want something prettier...
+# We could modify the `greet` function...
+# Or we could create a `person` object an inherit from it
+person = proto(first='', last='')
+person.__str__ = lambda self: f'{self.first} {self.last}'
+jane.link(person)
 
+# Now we get a nicer greeting
+jane.greet()
+# >>> Jane Doe
 
-# later on, we discover its parent, which has functionality
-fruit = pt.make()
-fruit.str = lambda self: "I AM FRUIT"
-
-
-# we would like to use that functionality
-orange = pt.link(orange, fruit)
-orange.str()
-# => "I AM FRUIT"
-
-
-# then, the parent class becomes a little crazy
-fruit.str = lambda self: "I AM FRUIT???"
-
-
-# and the children get confused
-orange.str()
-# => "I AM FRUIT???"
-
-
-# and they decide to cut ties with their parents and do their thing
-orange = pt.copy(orange, fruit)
-orange.str = lambda self: "I AM ORENJI!"
-
-orange.str()
-# => "I AM ORENJI!"
-
-fruit.str()
-# => "I AM FRUIT???"
-# and the porents do their own thing...
 ```

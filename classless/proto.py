@@ -9,9 +9,13 @@ class __proto:
     def __setattr__(self, name, value):
         return setattr(type(self), name, value)
 
+    def __repr__(self):
+        return f'<proto object at {hex(id(self))}>'
+
 
 def proto(**kwargs):
     return type('proto', (__proto,), kwargs.copy())()
 
 
 # ---------------------------------------------------------------------
+
