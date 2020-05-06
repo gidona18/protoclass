@@ -1,14 +1,22 @@
 classless
 =========
-Prototype-Oriented Programming in Python
-----------------------------------------
+[![PyPi](https://badge.fury.io/py/classless.svg)]
+[![PyVersions](https://img.shields.io/pypi/pyversions/classless.svg)]
+
+Prototype-Oriented Programming in Python.
+
+Installation
+------------
+`pip install classless`
+
+Usage
+-----
 
 ```Python
-
 from classless import proto
 
 # We create a basic object and add some functionality
-jane = proto(first='Jane', last='Doe')
+jane = proto(first="Jane", last="Doe")
 jane.greet = lambda self: print(self)
 jane.greet()
 # >>> <proto object at 0x7fe062ebdf10>
@@ -16,12 +24,15 @@ jane.greet()
 # Oh no, we want something prettier...
 # We could modify the `greet` function...
 # Or we could create a `person` object an inherit from it
-person = proto(first='', last='')
-person.__str__ = lambda self: f'{self.first} {self.last}'
+person = proto(first="", last="")
+person.__str__ = lambda self: f"{self.first} {self.last}"
 jane.link(person)
 
 # Now we get a nicer greeting
 jane.greet()
 # >>> Jane Doe
-
 ```
+
+License
+-------
+[Apache-2.0](./LICENSE)
