@@ -5,23 +5,23 @@ HERE = Path(__file__).parent
 README = ( HERE / 'README.md' ).read_text()
 
 setup(
-    name="classless",
-    version="0.0.1",
-    packages=find_packages(),
-    author="Armando Herrera",
-    author_email="[email protected]",
-    description="TODO",
+    name='classless',
+    version='0.0.1',
+    packages=find_packages(exclude=['tests']),
+    description='Prototype-Oriented Programming in Python',
     long_description=README,
-    url="https://github.com/jellowfish/classless",
-    license="Apache-2.0"
+    url='https://github.com/jellowfish/classless',
+    license='Apache-2.0',
     classifiers=[
-        "License :: OSI Approved :: Apache Software License",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.8",
+        'License :: OSI Approved :: Apache Software License',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.0',
     ],
-    #keywords="TODO",
+    #keywords='TODO',
     #...
     #zip_safe=True,
-    #python_requires="3.8",
-    #test_suite="TestProto",
+    #python_requires='3.8',
+    #test_suite='TestProto',
+    author='Armando Herrera',
+    author_email='[email protected]',
 )
