@@ -2,8 +2,8 @@
 class __prot:
     def link(self, other):
         prot = type('prot', (type(other),), type(self).__dict__.copy())
-        self = prot()
-        return self
+        type(self) = prot
+        return prot()
 
     def __setattr__(self, name, data):
         setattr(type(self), name, data)
@@ -25,3 +25,11 @@ print(ajo)
 
 mikan.put = lambda self: print(self)
 ajo.put()
+
+oso = prot(name='oso')
+oso.puts = lambda self : print("___")
+
+mikan = mikan.link(oso)
+
+# how to make this work?
+#ajo.puts()
