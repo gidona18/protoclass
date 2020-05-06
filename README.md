@@ -4,7 +4,7 @@ Prototype-Oriented Programming in Python
 ----------------------------------------
 
 ```Python
-from clasless import proto
+from classless import proto
 
 # We create a basic object and add some functionality
 jane = proto(first='Jane', last='Doe')
