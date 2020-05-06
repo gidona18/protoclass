@@ -1,24 +1,24 @@
 from inspect import signature
 from types import MethodType
 
-def __soft(self, other):
-    class prot:
-        def __init__(self):
-            pass
-
-        def __setattr__(self, name, data):
-            return setattr(type(self), name, data)
-
-        def __getattr__(self, name):
-            if hasattr(type(self, name)):
-                return getattr(type(self), name)
-            else:
-                return getattr(super(type(self)), name)
-
-    pass
+class __prot:
+    def __setattr__(self, name, data):
+        return setattr(type(self), name, data)
+        
+    def __getattr__(self, name):
+        return getattr(type(self), name)
 
 
 def __link(self, other):
+    class prot(__prot):
+        def __init__(self):
+            pass
+
+    prot = type('prot', (type(other),), prot.__dict__.copy())
+    return prot()
+
+
+def __copy(self, other):
     class prot:
         def __init__(self):
             pass
@@ -32,19 +32,15 @@ def __link(self, other):
     prot = type('prot', (type(other),), prot.__dict__.copy())
     return prot()
 
+
 def prot(**kwargs):
-    class prot:
+    class prot(__prot):
         def __init__(self, __dict):
             for name in __dict:
                 setattr(type(self), name, __dict[name])
-        
-        def __setattr__(self, name, data):
-            return setattr(type(self), name, data)
-        
-        def __getattr__(self, name):
-            return getattr(type(self), name)
-        
+            
     setattr(prot, 'link', MethodType(__link, prot))
+    setattr(prot, 'copy', MethodType(__copy, prot))
     return prot(kwargs)
 
 
