@@ -17,6 +17,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.0',
     ],
+    zip_safe=True,
     author='Armando Herrera',
     author_email='[email protected]',
 )
