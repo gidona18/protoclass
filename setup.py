@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="pyproto",
+    name="classless",
     version="0.0.1",
     packages=find_packages(),
     author="Armando Herrera",
@@ -9,5 +9,9 @@ setup(
     description="TODO",
     #long_description="TODO",
     keywords="TODO",
-    url="https://github.com/jellowfish/pyproto",
+    url="https://github.com/jellowfish/classless",
+    #...
+    zip_safe=True,
+    python_requires="3.8",
+    test_suite="TestClassless",
 )

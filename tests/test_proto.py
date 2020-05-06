@@ -2,13 +2,13 @@
 
 
 import unittest
-from pyproto import proto
+from classless import proto
 
 
 # ---------------------------------------------------------------------
 
 
-class TestCase(unittest.TestCase):
+class TestClassless(unittest.TestCase):
     def test_proto(self):
         # members
         mikan = proto(name="mikan")
