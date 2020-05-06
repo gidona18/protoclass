@@ -10,4 +10,5 @@ class Prot:
 prot = Prot()
 
 jude = prot(name='jude')
-print(jude.name)
+john = prot(name='john')
+print(type(jude) == type(john))
