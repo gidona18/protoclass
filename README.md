@@ -1,6 +1,6 @@
 classless
 =========
-Prototype-Oriented Programming in Python
+Prototype-Oriented Programming in Python.
 
 Installation
 ------------
