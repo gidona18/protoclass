@@ -1,5 +1,8 @@
 classless
 =========
+[![PyPi](https://badge.fury.io/py/classless.svg)]
+[![PyVersions](https://img.shields.io/pypi/pyversions/classless.svg)]
+
 Prototype-Oriented Programming in Python.
 
 Installation
