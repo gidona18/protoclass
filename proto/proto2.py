@@ -1,14 +1,16 @@
 from inspect import signature
 from types import MethodType
 
+#TODO: maybe turn keys into set
+
 class __prot:
     def __init__(self, __dict):
-        setattr(type(self), '__prot_keys', __dict.keys())
+        setattr(type(self), '__prot_keys', list(__dict.keys()))
         for name in __dict:
             setattr(type(self), name, __dict[name])
 
     def __setattr__(self, name, data):
-        getattr(self, '__prot_keys')[name] = data
+        getattr(self, '__prot_keys').append(name)
         return setattr(type(self), name, data)
         
     def __getattr__(self, name):
@@ -36,7 +38,8 @@ def dupe(self, other):
     while prot_link:
         for key in getattr(prot_link, '__prot_keys'):
             if key not in prot_dict:
-                print(type(prot_link).__dict__[key])
+                val = type(prot_link).__dict__[key]
+                print(type(val) == MethodType)
                 prot_dict[key] = type(prot_link).__dict__[key]
         prot_link = getattr(prot_link, '__prot_link')
 
@@ -80,4 +83,5 @@ assert(ala.age == '22')
 assert(ala.name == 'arm')
 
 #ala.__str__ = MethodType(lambda self: self.color, ala)
-#print(cla)
+ala.name = 'ala'
+print(ala)
