@@ -15,23 +15,35 @@ def link(self, other):
     for key in getattr(self, '__prot_keys'):
         prot_dict[key] = self.__dict__[key]
     prot = type('prot', (type(other),), {})
-    setattr(prot, '__prot_link', type(other))
+    setattr(prot, '__prot_link', other)
     return prot(prot_dict)
 
 
 def dupe(self, other):
-    class prot(__prot):
-        def __init__(self):
-            pass
+    class prot:
+        def __init__(self, __dict):
+            setattr(type(self), '__prot_keys', __dict.keys())
+            for name in __dict:
+                setattr(type(self), name, __dict[name])
 
-    prot_dict = type(other).__dict__.copy()
-    #prot = type('prot', (type(other),), prot.__dict__.copy())
-    #prot_link = getattr(type(other), '__prot_link')
-    #while prot_link:
+        def __setattr__(self, name, data):
+            return setattr(type(self), name, data)
+        
+        def __getattr__(self, name):
+            return getattr(type(self), name)
 
-    prot_dict.update(type(self))
+    prot_dict = {}
+    for key in getattr(self, '__prot_keys'):
+        prot_dict[key] = self.__dict__[key]
+    prot_link = other
+    while prot_link:
+        for key in getattr(prot_link, '__prot_keys'):
+            if key not in prot_dict:
+                prot_dict[key] = type(prot_link).__dict__[key]
+        prot_link = getattr(prot_link, '__prot_link')
+
     setattr(prot, '__prot_link', None)
-    return prot()
+    return prot(prot_dict)
 
 
 def prot(**kwargs):
@@ -54,12 +66,24 @@ def prot(**kwargs):
 
 
 arm = prot(name='arm')
-print(arm.name)
-print()
+assert(arm.name == 'arm')
 
 cla = prot(age='22').link(arm)
-print(cla.age)
-print()
+assert(cla.name == 'arm')
+assert(cla.age == '22')
+
+ala = prot(color='white').dupe(cla)
+assert(ala.color == 'white')
+assert(ala.age == '22')
+assert(ala.name == 'arm')
 
 arm.name = 'cla'
-print(cla.name)
+assert(arm.name == 'cla')
+assert(cla.name == 'cla')
+assert(cla.age == '22')
+cla.age = '23'
+assert(cla.age == '23')
+
+assert(ala.color == 'white')
+assert(ala.age == '22')
+assert(ala.name == 'arm')
