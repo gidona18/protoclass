@@ -8,7 +8,7 @@ from classless import proto
 # ---------------------------------------------------------------------
 
 
-class TestClassless(unittest.TestCase):
+class TestProto(unittest.TestCase):
     def test_proto(self):
         # members
         mikan = proto(name="mikan")
