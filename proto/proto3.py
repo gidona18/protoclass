@@ -2,7 +2,8 @@
 class __prot:
     def link(self, other):
         prot = type('prot', (type(other),), type(self).__dict__.copy())
-        return prot()
+        self = prot()
+        return self
 
     def __setattr__(self, name, data):
         setattr(type(self), name, data)
