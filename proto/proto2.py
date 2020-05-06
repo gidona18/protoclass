@@ -8,6 +8,7 @@ class __prot:
             setattr(type(self), name, __dict[name])
 
     def __setattr__(self, name, data):
+        getattr(self, '__prot_keys')[name] = data
         return setattr(type(self), name, data)
         
     def __getattr__(self, name):
