@@ -2,6 +2,11 @@ from inspect import signature
 from types import MethodType
 
 class __prot:
+    def __init__(self, __dict):
+        setattr(type(self), '__prot_keys', __dict.keys())
+        for name in __dict:
+            setattr(type(self), name, __dict[name])
+
     def __setattr__(self, name, data):
         return setattr(type(self), name, data)
         
@@ -20,17 +25,8 @@ def link(self, other):
 
 
 def dupe(self, other):
-    class prot:
-        def __init__(self, __dict):
-            setattr(type(self), '__prot_keys', __dict.keys())
-            for name in __dict:
-                setattr(type(self), name, __dict[name])
-
-        def __setattr__(self, name, data):
-            return setattr(type(self), name, data)
-        
-        def __getattr__(self, name):
-            return getattr(type(self), name)
+    class prot(__prot):
+        pass
 
     prot_dict = {}
     for key in getattr(self, '__prot_keys'):
@@ -39,6 +35,7 @@ def dupe(self, other):
     while prot_link:
         for key in getattr(prot_link, '__prot_keys'):
             if key not in prot_dict:
+                print(type(prot_link).__dict__[key])
                 prot_dict[key] = type(prot_link).__dict__[key]
         prot_link = getattr(prot_link, '__prot_link')
 
@@ -47,17 +44,9 @@ def dupe(self, other):
 
 
 def prot(**kwargs):
-    class prot:
-        def __init__(self, __dict):
-            setattr(type(self), '__prot_keys', __dict.keys())
-            for name in __dict:
-                setattr(type(self), name, __dict[name])
+    class prot(__prot):
+        pass
 
-        def __setattr__(self, name, data):
-            return setattr(type(self), name, data)
-        
-        def __getattr__(self, name):
-            return getattr(type(self), name)
             
     setattr(prot, 'link', MethodType(link, prot))
     setattr(prot, 'dupe', MethodType(dupe, prot))
@@ -67,6 +56,7 @@ def prot(**kwargs):
 
 arm = prot(name='arm')
 assert(arm.name == 'arm')
+arm.__str__ = MethodType(lambda self: self.name, arm)
 
 cla = prot(age='22').link(arm)
 assert(cla.name == 'arm')
@@ -87,3 +77,6 @@ assert(cla.age == '23')
 assert(ala.color == 'white')
 assert(ala.age == '22')
 assert(ala.name == 'arm')
+
+#ala.__str__ = MethodType(lambda self: self.color, ala)
+#print(cla)
