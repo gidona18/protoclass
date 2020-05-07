@@ -10,6 +10,7 @@ setup(
     packages=find_packages(exclude=["tests"]),
     description="Prototype-Oriented Programming in Python",
     long_description=README,
+    long_description_content_type="text/markdown",
     url="https://github.com/jellowfish/classless",
     license="Apache-2.0",
     classifiers=[
