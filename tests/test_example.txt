@@ -1,5 +1,5 @@
 
->>> from classless import proto
+>>> from protoclass import proto
 
 We create a basic object and add some functionality
 >>> jane = proto(first="Jane", last="Doe")

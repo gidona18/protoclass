@@ -2,7 +2,7 @@
 
 
 import unittest
-from classless import proto
+from protoclass import proto
 
 
 # ---------------------------------------------------------------------
