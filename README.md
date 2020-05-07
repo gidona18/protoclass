@@ -18,7 +18,7 @@ from classless import proto
 jane = proto(first="Jane", last="Doe")
 jane.greet = lambda self: print(self)
 jane.greet()
-# >>> <proto object at 0x7fe062ebdf10>
+# >>> <proto object at ...>
 
 # Oh no, we want something prettier...
 # We could modify the `greet` function...
