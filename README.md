@@ -1,7 +1,7 @@
 protoclass
 =========
-[![PyPi](https://badge.fury.io/py/protoclass.svg)]
-[![PyVersions](https://img.shields.io/pypi/pyversions/protoclass.svg)]
+![PyPi](https://badge.fury.io/py/protoclass.svg)
+![PyVersions](https://img.shields.io/pypi/pyversions/protoclass.svg)
 
 Prototype-Oriented Programming in Python.
 
