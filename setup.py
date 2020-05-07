@@ -27,5 +27,5 @@ setup(
     ],
     zip_safe=True,
     author="Armando Herrera",
-    author_email="[email protected]",
+    author_email="mail@jellowfish.com",
 )
