@@ -2,7 +2,7 @@ protoclass
 ==========
 
 |made-with-python| |PyPI-downloads-month| |PyPI-package-version|
-|PyPI-license| |PyPI-python-versions|
+|PyPI-license| |PyPI-python-versions| |RTD|
 
 Prototype-Oriented Programming in Python.
 
@@ -75,6 +75,8 @@ API Reference
 For more information on these functions, call ``help`` on the function
 you would like to know more of, like this: ``help(proto)``.
 
+You can also read the docs_.
+
 License
 -------
 
@@ -92,3 +94,6 @@ License
    :target: https://pypi.python.org/pypi/protoclass/
 .. |PyPI-python-versions| image:: https://img.shields.io/pypi/pyversions/protoclass.svg
    :target: https://pypi.python.org/pypi/protoclass/
+.. |RTD| image:: https://readthedocs.org/projects/protoclass-jf/badge/?version=latest
+   :target: http://protoclass-jf.readthedocs.io/?badge=latest
+.. _docs: https://protoclass-jf.readthedocs.io/en/latest/
