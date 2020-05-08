@@ -1,3 +1,4 @@
+"""
 
 >>> from protoclass import proto
 
@@ -20,3 +21,4 @@
 >>> jane.greet()
 Jane Doe
 
+"""
