@@ -19,7 +19,7 @@ Usage
 >>> jane = proto(first="Jane", last="Doe")
 >>> jane.greet = lambda self: print(self)
 >>> jane.greet()  #doctest: +ELLIPSIS
-<proto object at 0x...>
+<proto object at ...>
 
 
 # A more user-friendly would be better.
