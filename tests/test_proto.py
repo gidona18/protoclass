@@ -98,6 +98,13 @@ class TestProto(unittest.TestCase):
         cat.greet = lambda self: "meow"
         self.assertEqual(kitten.greet(), "meow")
 
+    def test_chain_self(self):
+        katze = proto(name='klin')
+        katze = katze.chain(katze)
+        self.assertEqual(katze.name, 'klin')
+        katze.size = 'small'
+        self.assertEqual(katze.size, 'small')
+
 
 if __name__ == "__main__":
     unittest.main()

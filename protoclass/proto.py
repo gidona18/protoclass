@@ -6,10 +6,19 @@ class __Proto:
 
     def chain(self, other):
         """..."""
-        type(self).__bases__ = (type(other),)
+        try:
+            type(self).__bases__ = (type(other),)
+        except TypeError: # linking self?
+            pass
         return self
 
-    #def multichain(self, other):
+    def multichain(self, *others):
+        """..."""
+        bases = ()
+        for other in others:
+            bases = bases + (type(other),)
+        type(self).__bases__ = type(self).__bases__ + bases
+        return self
 
     def __setattr__(self, name, value):
         return setattr(type(self), name, value)
