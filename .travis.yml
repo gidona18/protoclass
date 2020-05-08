@@ -2,6 +2,6 @@ language: python
 python: 3.8.2
 install:
   - pip install pytest
-  - pip install -f .
+  - pip install .
 script:
   - pytest --doctest-modules
