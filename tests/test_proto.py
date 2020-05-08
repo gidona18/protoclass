@@ -99,10 +99,18 @@ class TestProto(unittest.TestCase):
         self.assertEqual(kitten.greet(), "meow")
 
     def test_chain_self(self):
+        try:
+            katze = proto(name='klin')
+            katze = katze.chain(katze)
+            self.assertTrue(False)
+        except TypeError:
+            self.assertTrue(True)
+
+    def test_clone_self(self):
         katze = proto(name='klin')
-        katze = katze.chain(katze)
-        self.assertEqual(katze.name, 'klin')
+        katze = clone(katze)
         katze.size = 'small'
+        self.assertEqual(katze.name, 'klin')
         self.assertEqual(katze.size, 'small')
 
 

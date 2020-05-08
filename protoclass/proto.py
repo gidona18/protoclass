@@ -6,10 +6,8 @@ class __Proto:
 
     def chain(self, other):
         """..."""
-        try:
-            type(self).__bases__ = (type(other),)
-        except TypeError: # linking self?
-            pass
+        # will raise TypeError if linking self
+        type(self).__bases__ = (type(other),)
         return self
 
     def multichain(self, *others):
