@@ -114,6 +114,13 @@ class TestProto(unittest.TestCase):
         self.assertEqual(katze.name, "klin")
         self.assertEqual(katze.size, "small")
 
+    def test_multichain(self):
+        cat = proto(meow=lambda self: "meow")
+        dog = proto(bark=lambda self: "guau")
+        catdog = proto().multichain(cat, dog)
+        self.assertEqual(catdog.meow(), "meow")
+        self.assertEqual(catdog.bark(), "guau")
+
 
 if __name__ == "__main__":
     unittest.main()
