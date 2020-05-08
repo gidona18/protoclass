@@ -24,7 +24,7 @@ class TestProto(unittest.TestCase):
         mikan.introduce = lambda self: f"watashi wa {self.name} desu!"
         self.assertEqual(mikan.introduce(), "watashi wa mikan desu!")
 
-    def test_link_members(self):
+    def test_chain_members(self):
         # basic object creation
         orenji = proto(name="orenji")
         self.assertEqual(orenji.name, "orenji")
@@ -32,13 +32,13 @@ class TestProto(unittest.TestCase):
         orange_fruit = proto(color="orange")
         self.assertEqual(orange_fruit.color, "orange")
         # old object
-        orenji.link(orange_fruit)
+        orenji.chain(orange_fruit)
         self.assertEqual(orenji.color, "orange")
-        orenji = orenji.link(orange_fruit)
+        orenji = orenji.chain(orange_fruit)
         self.assertEqual(orenji.name, "orenji")
         self.assertEqual(orenji.color, "orange")
         # new object
-        mikan = proto(name="mikan").link(orange_fruit)
+        mikan = proto(name="mikan").chain(orange_fruit)
         self.assertEqual(mikan.name, "mikan")
         self.assertEqual(mikan.color, "orange")
         # assure that children mask parents' values
@@ -54,7 +54,7 @@ class TestProto(unittest.TestCase):
         # assure that parents can be changed
         orange_fruit.fruit_type = "ripe"
         brown_fruit = proto(color="brown")
-        orenji.link(brown_fruit)
+        orenji.chain(brown_fruit)
         self.assertEqual(orenji.color, "brown")
         try:
             orenji.fruit_type
@@ -65,13 +65,13 @@ class TestProto(unittest.TestCase):
         self.assertEqual(brown_fruit.fruit_type, "rotten")
         self.assertEqual(orenji.fruit_type, "rotten")
 
-    def test_link_methods(self):
+    def test_chain_methods(self):
         # basic object creation
         ringo = proto(en="apple")
         self.assertEqual(ringo.en, "apple")
         # update method of parent
         furutsu = proto(en="fruit")
-        ringo = ringo.link(furutsu)
+        ringo = ringo.chain(furutsu)
         self.assertNotEqual(str(furutsu), "fruit")
         self.assertNotEqual(str(ringo), "apple")
 
