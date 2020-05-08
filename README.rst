@@ -72,12 +72,10 @@ For more information on these functions, call ``help`` on the function
 you would like to know more of, like this: ``help(proto)``.
 You can also read the docs_.
 
-License
--------
-
-`Apache-2.0`_
-
-.. _Apache-2.0: ./LICENSE
+Contributing
+------------
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update tests as appropriate.
 
 .. |made-with-python| image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
    :target: https://www.python.org/
