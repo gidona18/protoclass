@@ -69,12 +69,9 @@ API Reference
 | prototypes share attributes with the same name, the parent prototype  |
 | that is first in the list of prototypes will provide it.              |
 +-----------------------------------------------------------------------+
-|                                                                       |
-+-----------------------------------------------------------------------+
 
 For more information on these functions, call ``help`` on the function
 you would like to know more of, like this: ``help(proto)``.
-
 You can also read the docs_.
 
 License
