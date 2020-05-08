@@ -80,7 +80,30 @@ def __multichain(self, *others):
 
 
 def proto(**attrs):
-    """..."""
+    """Makes a new proto object with given attributes.
+
+    When no attributes are given, an empty object will be made.
+
+    Parameters
+    ----------
+    **attrs : dict
+        Attributes to add to `proto`.
+
+    Returns
+    -------
+    proto : proto
+        A new proto object with given attributes.
+
+    Examples
+    --------
+    >>> jane = proto(first='Jane', last='Doe')
+    >>> f"{jane.first} {jane.last}"
+    'Jane Doe'
+    >>> null = proto()
+    >>> null  #doctest: +ELLIPSIS
+    <proto object at ...>
+
+    """
 
     class __proto:
         def __setattr__(self, name, value):
@@ -96,7 +119,7 @@ def proto(**attrs):
 
 
 def clone(proto_object):
-    """Make a new object that inherits from a single prototype.
+    """Makes a new proto object that inherits from a single prototype.
 
     Equivalent to proto().chain(`proto_object`).
 
@@ -125,7 +148,7 @@ def clone(proto_object):
 
 
 def multiclone(*proto_objects):
-    """Make a new object that inherits from multiple prototypes.
+    """Makes a new proto object that inherits from multiple prototypes.
 
     Equivalent to proto().multichain(*`proto_objects`).
     When the parent prototypes share attributes with the same name, the
