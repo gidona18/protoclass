@@ -1,5 +1,7 @@
+version: 2
+
 sphinx:
   configuration: docs/source/conf.py
 
 python:
-  setup_py_install: true
+  version: 3
