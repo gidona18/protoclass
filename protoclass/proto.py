@@ -157,7 +157,7 @@ def multiclone(*proto_objects):
 
     Parameters
     ----------
-    *proto_objects : iterable
+    proto_objects : iterable
         Prototypes to inherit attributes from.
 
     Returns
