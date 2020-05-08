@@ -2,7 +2,7 @@
 
 
 import unittest
-from protoclass import proto, clone
+from protoclass import proto, clone, multiclone
 
 
 # ---------------------------------------------------------------------
@@ -118,6 +118,13 @@ class TestProto(unittest.TestCase):
         cat = proto(meow=lambda self: "meow")
         dog = proto(bark=lambda self: "guau")
         catdog = proto().multichain(cat, dog)
+        self.assertEqual(catdog.meow(), "meow")
+        self.assertEqual(catdog.bark(), "guau")
+
+    def test_multiclone(self):
+        cat = proto(meow=lambda self: "meow")
+        dog = proto(bark=lambda self: "guau")
+        catdog = multiclone(cat, dog)
         self.assertEqual(catdog.meow(), "meow")
         self.assertEqual(catdog.bark(), "guau")
 
