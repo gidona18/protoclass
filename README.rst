@@ -40,29 +40,29 @@ API Reference
 -------------
 
 +-----------------------------------------------------------------------+
-| **``proto(**attrs)``**                                                |
+| **proto(attrs)**                                                      |
 +-----------------------------------------------------------------------+
 | Makes a new proto object with given attributes. When no attributes    |
 | are given, an empty object will be made.                              |
 +-----------------------------------------------------------------------+
-| **``proto.chain(self, other)``**                                      |
+| **proto.chain(self, other)**                                          |
 +-----------------------------------------------------------------------+
 | Makes self inherit from a single prototype. Any relationship with     |
 | previous parent prototypes will be removed.                           |
 +-----------------------------------------------------------------------+
-| **``proto.multichain(self, *others)``**                               |
+| **proto.multichain(self, others)**                                    |
 +-----------------------------------------------------------------------+
 | Makes self inherit from multiple prototypes. Any relationship with    |
 | previous parent prototypes will be removed. When the parent           |
 | prototypes share attributes with the same name, the parent prototype  |
 | that is first in the list of prototypes will provide it.              |
 +-----------------------------------------------------------------------+
-| **``clone(proto_object)``**                                           |
+| **clone(proto_object)**                                               |
 +-----------------------------------------------------------------------+
 | Makes a new proto object that inherits from a single prototype.       |
 | Equivalent to ``proto().chain(proto_object)``.                        |
 +-----------------------------------------------------------------------+
-| **``multiclone(*proto_objects)``**                                    |
+| **multiclone(proto_objects)**                                         |
 +-----------------------------------------------------------------------+
 | Makes a new proto object that inherits from multiple prototypes.      |
 | Equivalent to ``proto().multichain(proto_objects)``. When the parent  |
