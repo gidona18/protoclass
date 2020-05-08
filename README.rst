@@ -1,7 +1,7 @@
 protoclass
 ==========
 
-|PyPI-package-version| |PyPI-python-versions| |PyPI-license| |travis-ci| |readthedocs| |PyPI-downloads-month|
+|made-with-python| |PyPI-package-version| |PyPI-license| |travis-ci| |readthedocs| |PyPI-downloads-month|
 
 Prototype-Oriented Programming in Python.
 
