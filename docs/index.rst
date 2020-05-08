@@ -10,7 +10,7 @@ Welcome to protoclass's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   source/README.md
+   ./source/README.md
 
 
 
