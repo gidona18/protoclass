@@ -57,7 +57,7 @@ class TestProto(unittest.TestCase):
         orenji.chain(brown_fruit)
         self.assertEqual(orenji.color, "brown")
         try:
-            orenji.fruit_type
+            orenji.fruit_type  # not present in current prototype
             self.assertTrue(False)
         except AttributeError:
             self.assertTrue(True)
@@ -74,7 +74,7 @@ class TestProto(unittest.TestCase):
         ringo = ringo.chain(furutsu)
         self.assertNotEqual(str(furutsu), "fruit")
         self.assertNotEqual(str(ringo), "apple")
-
+        # new functionality
         furutsu.__str__ = lambda self: self.en
         self.assertEqual(str(furutsu), "fruit")
         self.assertEqual(str(ringo), "apple")
@@ -84,34 +84,35 @@ class TestProto(unittest.TestCase):
         self.assertEqual(ringo.__str__(), "I am apple")
 
     def test_clone(self):
+        # base object
         animal = proto(kind="animal")
         self.assertEqual(animal.kind, "animal")
-
+        # a simple clone
         cat = clone(animal)
         self.assertEqual(cat.kind, "animal")
-
+        # a clone of a clone
         kitten = clone(cat)
         kitten.size = "small"
         self.assertEqual(kitten.kind, "animal")
         self.assertEqual(kitten.size, "small")
-
+        # propagation
         cat.greet = lambda self: "meow"
         self.assertEqual(kitten.greet(), "meow")
 
     def test_chain_self(self):
         try:
-            katze = proto(name='klin')
-            katze = katze.chain(katze)
+            katze = proto(name="klin")
+            katze = katze.chain(katze)  # chaining self is not allowed
             self.assertTrue(False)
         except TypeError:
             self.assertTrue(True)
 
     def test_clone_self(self):
-        katze = proto(name='klin')
-        katze = clone(katze)
-        katze.size = 'small'
-        self.assertEqual(katze.name, 'klin')
-        self.assertEqual(katze.size, 'small')
+        katze = proto(name="klin")
+        katze = clone(katze)  # cloning creates a new object
+        katze.size = "small"
+        self.assertEqual(katze.name, "klin")
+        self.assertEqual(katze.size, "small")
 
 
 if __name__ == "__main__":

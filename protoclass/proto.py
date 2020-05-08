@@ -29,9 +29,11 @@ def proto(**kwargs):
     """..."""
     return type("proto", (__Proto,), kwargs.copy())()
 
+
 def clone(proto_object):
     """..."""
     return proto().chain(proto_object)
+
 
 # what if some objects should not be cloned?
 
