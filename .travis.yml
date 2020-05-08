@@ -1,0 +1,6 @@
+language: python
+python: 3.8.2
+install:
+  - pip install pytest
+script:
+  - pytest --doctest-modules
