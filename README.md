@@ -1,7 +1,10 @@
 protoclass
 ==========
-![PyPi](https://badge.fury.io/py/protoclass.svg)
-![PyVersions](https://img.shields.io/pypi/pyversions/protoclass.svg)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![PyPI-downloads-month](https://img.shields.io/pypi/dm/protoclass.svg)](https://pypi.python.org/pypi/protoclass/)
+[![PyPI-package-version](https://img.shields.io/pypi/v/protoclass.svg)](https://pypi.python.org/pypi/protoclass/)
+[![PyPI-license](https://img.shields.io/pypi/l/protoclass.svg)](https://pypi.python.org/pypi/protoclass/)
+[![PyPI-python-versions](https://img.shields.io/pypi/pyversions/protoclass.svg)](https://pypi.python.org/pypi/protoclass/)
 
 Prototype-Oriented Programming in Python.
 
