@@ -3,10 +3,10 @@
 ::: protoclass.proto
     :docstring:
 
-::: protoclass.proto.__chain
+::: protoclass.proto.chain
     :docstring:
 
-::: protoclass.proto.__multichain
+::: protoclass.proto.multichain
     :docstring:
 
 ::: protoclass.clone
