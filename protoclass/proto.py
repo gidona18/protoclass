@@ -32,11 +32,11 @@ def proto(**attrs):
     return ty()
 
 
-def clone(prototype):
+def clone(proto_object):
     """
     """
 
-    return proto().chain(other)
+    return proto().chain(proto_object)
 
 
 def multiclone(*proto_objects):
