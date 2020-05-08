@@ -24,6 +24,15 @@ class TestProto(unittest.TestCase):
         mikan.introduce = lambda self: f"watashi wa {self.name} desu!"
         self.assertEqual(mikan.introduce(), "watashi wa mikan desu!")
 
+    def test_chain_self(self):
+        try:
+            # chaining self is not allowed
+            katze = proto(name="klin")
+            katze = katze.chain(katze)
+            self.assertTrue(False)
+        except TypeError:
+            self.assertTrue(True)
+
     def test_chain_members(self):
         # basic object creation
         orenji = proto(name="orenji")
@@ -99,17 +108,10 @@ class TestProto(unittest.TestCase):
         cat.greet = lambda self: "meow"
         self.assertEqual(kitten.greet(), "meow")
 
-    def test_chain_self(self):
-        try:
-            katze = proto(name="klin")
-            katze = katze.chain(katze)  # chaining self is not allowed
-            self.assertTrue(False)
-        except TypeError:
-            self.assertTrue(True)
-
     def test_clone_self(self):
+        # cloning self is allowed as it creates a new object
         katze = proto(name="klin")
-        katze = clone(katze)  # cloning creates a new object
+        katze = clone(katze)
         katze.size = "small"
         self.assertEqual(katze.name, "klin")
         self.assertEqual(katze.size, "small")
@@ -121,12 +123,32 @@ class TestProto(unittest.TestCase):
         self.assertEqual(catdog.meow(), "meow")
         self.assertEqual(catdog.bark(), "guau")
 
+    def test_multichain_self(self):
+        # as with single chaining, this is not allowed
+        try:
+            cat = proto(meow=lambda self: "meow")
+            dog = proto(bark=lambda self: "guau")
+            catdog = cat.multichain(cat, dog)
+            self.assertTrue(False)
+        except TypeError:
+            self.assertTrue(True)
+
     def test_multiclone(self):
         cat = proto(meow=lambda self: "meow")
         dog = proto(bark=lambda self: "guau")
         catdog = multiclone(cat, dog)
         self.assertEqual(catdog.meow(), "meow")
         self.assertEqual(catdog.bark(), "guau")
+
+    def test_multiclone_name_conflict(self):
+        # when prototypes share attribute names
+        # the attribute of the first prototype is used
+        cat = proto(name="cat")
+        dog = proto(name="dog")
+        catdog = multiclone(cat, dog)
+        self.assertEqual(catdog.name, "cat")
+        catdog.name = "catdog"
+        self.assertEqual(catdog.name, "catdog")
 
 
 if __name__ == "__main__":
