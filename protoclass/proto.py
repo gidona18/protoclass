@@ -8,7 +8,44 @@ def __chain(self, other):
 
 
 def __multichain(self, *others):
-    """..."""  # wil raise TypeError if linking self
+    """Makes self inherit from multiple prototypes.
+
+    Any relationship with previous parent prototypes will be removed.
+    When the parent prototypes share attributes with the same name, the
+    parent prototype that is first in the list of prototypes will
+    provide it.
+
+    Parameters
+    ----------
+    *others : iterable
+        Prototypes to inherit attributes from.
+
+    Returns
+    -------
+    self : proto
+        A proto object that inherits from `others`.
+
+    Raises
+    ------
+    TypeError
+        When trying to chain self to self because it generates a cycle.
+
+    Examples
+    --------
+    >>> cat = proto(name="cat", meow="meow")
+    >>> dog = proto(name="dog", bark="woof")
+    >>> catdog = proto(color="orange").multichain(cat, dog)
+    >>> catdog.color
+    'orange'
+    >>> catdog.meow
+    'meow'
+    >>> catdog.bark
+    'woof'
+    >>> catdog.name  # first attribute found will be used upon conflict
+    'cat'
+
+    """
+
     bases = ()
     for other in others:
         bases = bases + (type(other),)
@@ -94,9 +131,6 @@ def multiclone(*proto_objects):
     """
 
     return proto().multichain(*proto_objects)
-
-
-# what if some objects should not be cloned?
 
 
 # ---------------------------------------------------------------------
