@@ -35,7 +35,6 @@ master_doc = 'index'
 # ones.
 extensions = [
     'sphinx.ext.napoleon',
-    'recommonmark',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

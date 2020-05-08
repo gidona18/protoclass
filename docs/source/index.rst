@@ -10,7 +10,7 @@ Welcome to protoclass's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   readme
+   README
 
 Indices and tables
 ==================
