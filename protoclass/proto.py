@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------
 
-def __chain(self, other):
+def chain(self, other):
     """Makes self inherit from a single prototype.
 
     Any relationship with previous parent prototypes will be removed.
@@ -33,7 +33,7 @@ def __chain(self, other):
     return self
 
 
-def __multichain(self, *others):
+def multichain(self, *others):
     """Makes self inherit from multiple prototypes.
 
     Any relationship with previous parent prototypes will be removed.
@@ -113,8 +113,8 @@ def proto(**attrs):
             return f"<proto object at {hex(id(self))}>"
 
     ty = type("proto", (__proto,), attrs.copy())
-    setattr(ty, "chain", __chain)
-    setattr(ty, "multichain", __multichain)
+    setattr(ty, "chain", chain)
+    setattr(ty, "multichain", multichain)
     return ty()
 
 
