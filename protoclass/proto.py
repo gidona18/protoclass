@@ -1,8 +1,34 @@
 # ---------------------------------------------------------------------
 
-
 def __chain(self, other):
-    """..."""  # wil raise TypeError if linking self
+    """Makes self inherit from a single prototype.
+
+    Any relationship with previous parent prototypes will be removed.
+
+    Parameters
+    ----------
+    other : proto
+        Prototype to inherit attributes from.
+
+    Returns
+    -------
+    self : proto
+        A proto object that inherits from `other`.
+
+    Raises
+    ------
+    TypeError
+        When trying to chain self to self because it generates a cycle.
+
+    Examples
+    --------
+    >>> tangerine = proto(color="orange")
+    >>> orange = proto().chain(tangerine)
+    >>> orange.color
+    'orange'
+
+    """
+
     type(self).__bases__ = (type(other),)
     return self
 
