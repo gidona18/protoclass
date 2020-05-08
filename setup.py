@@ -2,7 +2,7 @@ from pathlib import Path
 from setuptools import setup, find_packages
 
 HERE = Path(__file__).parent
-README = (HERE / "README.md").read_text()
+README = (HERE / "README.rst").read_text()
 
 setup(
     name="protoclass",
@@ -10,7 +10,6 @@ setup(
     packages=find_packages(exclude=["tests"]),
     description="Prototype-Oriented Programming in Python",
     long_description=README,
-    long_description_content_type="text/markdown",
     url="https://github.com/jellowfish/protoclass",
     license="Apache-2.0",
     classifiers=[
