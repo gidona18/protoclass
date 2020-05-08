@@ -9,7 +9,8 @@ Welcome to protoclass's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   source/README
+
+   source/README.rst
 
 
 
