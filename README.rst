@@ -91,4 +91,4 @@ Please make sure to update tests as appropriate.
    :target: https://travis-ci.com/jellowfish/protoclass
 .. |readthedocs| image:: https://readthedocs.org/projects/protoclass-jf/badge/?version=latest
    :target: http://protoclass-jf.readthedocs.io/?badge=latest
-.. _docs: https://protoclass-jf.readthedocs.io/en/latest/
+.. _docs: https://protoclass-jf.readthedocs.io/en/latest/protoclass.html
