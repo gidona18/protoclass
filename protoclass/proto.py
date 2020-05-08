@@ -63,11 +63,11 @@ def multiclone(*proto_objects):
     >>> dog = proto(name="dog", bark="woof")
     >>> catdog = multiclone(cat, dog)
     >>> catdog.meow
-    "meow"
+    'meow'
     >>> catdog.bark
-    "woof"
+    'woof'
     >>> catdog.name  # first attribute found will be used upon conflict
-    "cat"
+    'cat'
 
     """
 
