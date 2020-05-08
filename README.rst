@@ -1,8 +1,8 @@
 protoclass
 ==========
 
-|made-with-python| |PyPI-downloads-month| |PyPI-package-version|
-|PyPI-license| |PyPI-python-versions| |RTD|
+|made-with-python| |PyPI-package-version| |PyPI-python-versions| |PyPI-license| |PyPI-downloads-month|
+|travis-ci| |readthedocs|
 
 Prototype-Oriented Programming in Python.
 
@@ -91,6 +91,8 @@ License
    :target: https://pypi.python.org/pypi/protoclass/
 .. |PyPI-python-versions| image:: https://img.shields.io/pypi/pyversions/protoclass.svg
    :target: https://pypi.python.org/pypi/protoclass/
-.. |RTD| image:: https://readthedocs.org/projects/protoclass-jf/badge/?version=latest
+.. |travis-ci| image:: https://travis-ci.com/jellowfish/protoclass.svg?branch=master
+   :target: https://travis-ci.com/jellowfish/protoclass
+.. |readthedocs| image:: https://readthedocs.org/projects/protoclass-jf/badge/?version=latest
    :target: http://protoclass-jf.readthedocs.io/?badge=latest
 .. _docs: https://protoclass-jf.readthedocs.io/en/latest/
