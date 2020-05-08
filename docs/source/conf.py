@@ -24,6 +24,9 @@ author = 'Armando Herrera'
 # The full version, including alpha/beta/rc tags
 release = '0.0.3'
 
+# Fix problem with rtd
+master_doc = 'index'
+
 
 # -- General configuration ---------------------------------------------------
 

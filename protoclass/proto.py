@@ -1,5 +1,6 @@
 # ---------------------------------------------------------------------
 
+
 def chain(self, other):
     """Makes self inherit from a single prototype.
 
