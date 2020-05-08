@@ -38,10 +38,16 @@ Jane Doe
 
 API Reference
 -------------
-**`proto(**kwargs)`**
-Make a new prototype object with the given attributes. If no properties are given, and empty prototype will be created. The latter is useful when only a clone of another object is needed.
+| |
+| --- |
+| **`proto(**attrs)`** |
+| Makes a new proto object with given attributes. When no attributes are given, an empty object will be made. |
+| **`proto.chain(self, other)`** |
+| Makes self inherit from a single prototype. Any relationship with previous parent prototypes will be removed. |
+| **`proto.multichain(self, *others)`** |
+| Makes self inherit from multiple prototypes. Any relationship with previous parent prototypes will be removed. When the parent prototypes share attributes with the same name, the parent prototype that is first in the list of prototypes will provide it. |
+| |
 
-**`proto.link(self, other)`** Make current object a prototype of another object. This is similar to single inheritance. Each object can have multiple child links, but only one parent link. Parent links can be changed at any time, but objects that are children of this one will be affected by this. This enables change propagation.
 
 License
 -------
