@@ -52,6 +52,7 @@ API Reference
 | Makes a new proto object that inherits from multiple prototypes. Equivalent to `proto().multichain(proto_objects)`. When the parent prototypes share attributes with the same name, the parent prototype that is first in the list of prototypes will provide it. |
 | |
 
+For more information on these functions, call `help` on the function you would like to know more of, like this: `help(proto)`.
 
 License
 -------
