@@ -1,7 +1,7 @@
 protoclass - *Prototype-Oriented Programming in Python.*
 ========================================================
 
-|made-with-python| |PyPI-package-version| |PyPI-license| |PyPI-python-versions| |travis-ci| |readthedocs|
+|PyPI-package-version| |PyPI-license| |PyPI-python-versions| |travis-ci| |readthedocs| |PyPI-downloads-month|
  
 
 Installation
