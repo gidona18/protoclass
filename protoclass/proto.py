@@ -33,7 +33,29 @@ def proto(**attrs):
 
 
 def clone(proto_object):
-    """
+    """Make a new object that inherits from a single prototype.
+
+    Equivalent to proto().chain(`proto_object`).
+
+    Parameters
+    ----------
+    *proto_object : proto
+        Prototype to inherit attributes from.
+
+    Returns
+    -------
+    proto : proto
+        A new object that inherits from `proto_object`.
+
+    Examples
+    --------
+    >>> apple = proto(kind="fruit", color="green")
+    >>> mango = clone(apple)
+    >>> mango.kind
+    'fruit'
+    >>> mango.color
+    'green'
+
     """
 
     return proto().chain(proto_object)
@@ -55,7 +77,7 @@ def multiclone(*proto_objects):
     Returns
     -------
     proto : proto
-        A new object that inherits from multiple prototypes.
+        A new object that inherits from `proto_objects`.
 
     Examples
     --------
