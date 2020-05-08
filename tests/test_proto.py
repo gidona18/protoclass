@@ -2,7 +2,7 @@
 
 
 import unittest
-from protoclass import proto
+from protoclass import proto, clone
 
 
 # ---------------------------------------------------------------------
@@ -82,6 +82,21 @@ class TestProto(unittest.TestCase):
         ringo.__str__ = lambda self: f"I am {self.en}"
         self.assertEqual(furutsu.__str__(), "fruit")
         self.assertEqual(ringo.__str__(), "I am apple")
+
+    def test_clone(self):
+        animal = proto(kind="animal")
+        self.assertEqual(animal.kind, "animal")
+
+        cat = clone(animal)
+        self.assertEqual(cat.kind, "animal")
+
+        kitten = clone(cat)
+        kitten.size = "small"
+        self.assertEqual(kitten.kind, "animal")
+        self.assertEqual(kitten.size, "small")
+
+        cat.greet = lambda self: "meow"
+        self.assertEqual(kitten.greet(), "meow")
 
 
 if __name__ == "__main__":

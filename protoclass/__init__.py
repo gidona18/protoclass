@@ -1,3 +1,3 @@
-from .proto import proto
+from .proto import proto, clone
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
