@@ -37,36 +37,25 @@ Usage
 API Reference
 -------------
 
-+-----------------------------------------------------------------------+
-| **proto(attrs)**                                                      |
-+-----------------------------------------------------------------------+
-| Makes a new prototype with given attributes.                          |
-| An empty prototype will be made when no attributes are given.         |
-+-----------------------------------------------------------------------+
-| **protoclass.proto.chain(self, other, *others)**                      |
-+-----------------------------------------------------------------------+
-| Makes self inherit from a single prototype. Any relationship with     |
-| previous parent prototypes will be removed.                           |
-+-----------------------------------------------------------------------+
-| **proto.multichain(self, others)**                                    |
-+-----------------------------------------------------------------------+
-| Makes self inherit from multiple prototypes. Any relationship with    |
-| previous parent prototypes will be removed. When the parent           |
-| prototypes share attributes with the same name, the parent prototype  |
-| that is first in the list of prototypes will provide it.              |
-+-----------------------------------------------------------------------+
-| **clone(proto_object)**                                               |
-+-----------------------------------------------------------------------+
-| Makes a new proto object that inherits from a single prototype.       |
-| Equivalent to ``proto().chain(proto_object)``.                        |
-+-----------------------------------------------------------------------+
-| **multiclone(proto_objects)**                                         |
-+-----------------------------------------------------------------------+
-| Makes a new proto object that inherits from multiple prototypes.      |
-| Equivalent to ``proto().multichain(proto_objects)``. When the parent  |
-| prototypes share attributes with the same name, the parent prototype  |
-| that is first in the list of prototypes will provide it.              |
-+-----------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **proto(\*\*attrs)**                                                                                                                                                             |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Makes a new prototype with given attributes.                                                                                                                                     |
+| An empty prototype will be made when no attributes are given.                                                                                                                    |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **proto.chain(self, other, \*others)**                                                                                                                                           |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Makes self copy attributes from another prototype or multiple other prototypes.                                                                                                  |
+| Any previous relationship with other parent prototypes will be automatically severed.                                                                                            |
+| When parent prototypes share attributes with the same name, the first parent prototype that has that attribute will be provide it, so the order in which they are given matters. |
+| Any change made to parent prototypes will be automatically propagated to this prototype.                                                                                         |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **clone(other, \*others)**                                                                                                                                                       |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Makes a new prototype by copying attributes from another prototype or multiple other prototypes.                                                                                 |
+| When parent prototypes share attributes with the same name, the first parent prototype that has that attribute will be provide it, so the order in which they are given matters. |
+| Any change made to parent prototypes will be automatically propagated to this clone.                                                                                             |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 For more information on these functions, call ``help`` on the function
 you would like to know more of, like this: ``help(proto)``.
