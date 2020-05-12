@@ -124,7 +124,7 @@ def proto(**attrs):
     return ty()
 
 
-def clone(proto_object):
+def clone(other, *others):
     """Makes a new proto object that inherits from a single prototype.
 
     Equivalent to proto().chain(`proto_object`).
@@ -150,7 +150,7 @@ def clone(proto_object):
 
     """
 
-    return proto().chain(proto_object)
+    return proto().chain(other, *others)
 
 
 def multiclone(*proto_objects):

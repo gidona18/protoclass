@@ -136,7 +136,7 @@ class TestProto(unittest.TestCase):
     def test_multiclone(self):
         cat = proto(meow=lambda self: "meow")
         dog = proto(bark=lambda self: "guau")
-        catdog = multiclone(cat, dog)
+        catdog = clone(cat, dog)
         self.assertEqual(catdog.meow(), "meow")
         self.assertEqual(catdog.bark(), "guau")
 
@@ -145,7 +145,7 @@ class TestProto(unittest.TestCase):
         # the attribute of the first prototype is used
         cat = proto(name="cat")
         dog = proto(name="dog")
-        catdog = multiclone(cat, dog)
+        catdog = clone(cat, dog)
         self.assertEqual(catdog.name, "cat")
         catdog.name = "catdog"
         self.assertEqual(catdog.name, "catdog")
