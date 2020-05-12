@@ -1,7 +1,9 @@
+from collections import OrderedDict
+
 # ---------------------------------------------------------------------
 
 
-def chain(self, other):
+def chain(self, other, *others):
     """Makes self inherit from a single prototype.
 
     Any relationship with previous parent prototypes will be removed.
@@ -30,7 +32,11 @@ def chain(self, other):
 
     """
 
-    type(self).__bases__ = (type(other),)
+    bases = (type(other),)
+    for other in others:
+        bases = bases + (type(other),)
+    print(type(self).__bases__)
+    type(self).__bases__ = bases
     return self
 
 

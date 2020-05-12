@@ -119,7 +119,7 @@ class TestProto(unittest.TestCase):
     def test_multichain(self):
         cat = proto(meow=lambda self: "meow")
         dog = proto(bark=lambda self: "guau")
-        catdog = proto().multichain(cat, dog)
+        catdog = proto().chain(cat, dog)
         self.assertEqual(catdog.meow(), "meow")
         self.assertEqual(catdog.bark(), "guau")
 
@@ -128,7 +128,7 @@ class TestProto(unittest.TestCase):
         try:
             cat = proto(meow=lambda self: "meow")
             dog = proto(bark=lambda self: "guau")
-            catdog = cat.multichain(cat, dog)
+            catdog = cat.chain(cat, dog)
             self.assertTrue(False)
         except TypeError:
             self.assertTrue(True)
