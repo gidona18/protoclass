@@ -35,13 +35,10 @@ def chain(self, other, *others):
 
     Examples
     --------
-    # Chaining a single prototype
     >>> tangerine = proto(color="orange")
     >>> orange = proto().chain(tangerine)
     >>> orange.color
     'orange'
-
-    # Chaining multiple prototypes
     >>> cat = proto(name="cat", meow="meow")
     >>> dog = proto(name="dog", bark="woof")
     >>> catdog = proto(color="orange").multichain(cat, dog)
@@ -176,15 +173,12 @@ def clone(other, *others):
 
     Examples
     --------
-    # Cloning from a single prototype
     >>> apple = proto(kind="fruit", color="green")
     >>> mango = clone(apple)
     >>> mango.kind
     'fruit'
     >>> mango.color
     'green'
-
-    # Cloning from multiple prototypes
     >>> cat = proto(name="cat", meow="meow")
     >>> dog = proto(name="dog", bark="woof")
     >>> catdog = multiclone(cat, dog)
