@@ -110,19 +110,19 @@ def multichain(self, *others):
 
 
 def proto(**attrs):
-    """Makes a new proto object with given attributes.
+    """Makes a new prototype with given attributes.
 
-    When no attributes are given, an empty object will be made.
+    An empty prototype will be made when no attributes are given.
 
     Parameters
     ----------
-    **attrs : dict
+    attrs : dict
         Attributes to add to `proto`.
 
     Returns
     -------
     proto : proto
-        A new proto object with given attributes.
+        A new prototype with given attributes.
 
     Examples
     --------
@@ -166,7 +166,7 @@ def clone(other, *others):
     other: proto
         Prototype to copy attributes from.
 
-    *others : list(proto)
+    others : list(proto)
         Prototypes to copy attributes from.
 
     Returns
