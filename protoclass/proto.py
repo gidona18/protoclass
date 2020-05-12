@@ -1,6 +1,12 @@
 # ---------------------------------------------------------------------
 
 
+import warnings
+
+
+# ---------------------------------------------------------------------
+
+
 def chain(self, other, *others):
     """Makes self copy attributes from another prototype or
     multiple other prototypes.
@@ -103,6 +109,10 @@ def multichain(self, *others):
        multiple prototypes as well.
 
     """
+
+    warnings.warn(
+        "Deprecated since version 0.5.3: `multichain` will be removed in protoclass 1.0.0, and it will be replaced by `chain` because the latter now works with multiple prototypes as well."
+    )
 
     bases = ()
     for other in others:
@@ -235,6 +245,10 @@ def multiclone(*proto_objects):
        multiple prototypes as well.
 
     """
+
+    warnings.warn(
+        "Deprecated since version 0.5.3: `multiclone` will be removed in protoclass 1.0.0, and it will be replaced by `clone` because the latter now works with multiple prototypes as well."
+    )
 
     return proto().multichain(*proto_objects)
 
