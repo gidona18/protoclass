@@ -1,5 +1,3 @@
-from collections import OrderedDict
-
 # ---------------------------------------------------------------------
 
 
@@ -125,28 +123,51 @@ def proto(**attrs):
 
 
 def clone(other, *others):
-    """Makes a new proto object that inherits from a single prototype.
+    """Makes a new prototype by copying attributes from another
+    prototype or multiple other prototypes.
 
-    Equivalent to proto().chain(`proto_object`).
+    When parent prototypes share attributes with the same name, the
+    first parent prototype that has that attribute will be provide it,
+    so the order in which they are given matters.
+
+    Any change made to parent prototypes will be automatically
+    propagated to this clone.
+
+    Equivalent to ``proto().chain(other, *others)``
 
     Parameters
     ----------
-    *proto_object : proto
-        Prototype to inherit attributes from.
+    other: proto
+        Prototype to copy attributes from.
+
+    *others : list(proto)
+        Prototypes to copy attributes from.
 
     Returns
     -------
     proto : proto
-        A new object that inherits from `proto_object`.
+        A new prototype with attributes from `other` and `others`.
 
     Examples
     --------
+    # Cloning from a single prototype
     >>> apple = proto(kind="fruit", color="green")
     >>> mango = clone(apple)
     >>> mango.kind
     'fruit'
     >>> mango.color
     'green'
+
+    # Cloning from multiple prototypes
+    >>> cat = proto(name="cat", meow="meow")
+    >>> dog = proto(name="dog", bark="woof")
+    >>> catdog = multiclone(cat, dog)
+    >>> catdog.meow
+    'meow'
+    >>> catdog.bark
+    'woof'
+    >>> catdog.name
+    'cat'
 
     """
 
