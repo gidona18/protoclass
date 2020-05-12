@@ -26,7 +26,7 @@ def chain(self, other, *others):
     other: proto
         Prototype to copy attributes from.
 
-    others : list(proto)
+    *others : list(proto)
         Prototypes to copy attributes from.
 
     Returns
@@ -129,7 +129,7 @@ def proto(**attrs):
 
     Parameters
     ----------
-    attrs : dict
+    **attrs : dict
         Attributes to add to `proto`.
 
     Returns
@@ -179,7 +179,7 @@ def clone(other, *others):
     other: proto
         Prototype to copy attributes from.
 
-    others : list(proto)
+    *others : list(proto)
         Prototypes to copy attributes from.
 
     Returns
