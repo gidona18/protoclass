@@ -6,7 +6,7 @@ README = (HERE / "README.rst").read_text()
 
 setup(
     name="protoclass",
-    version="0.0.4",
+    version="0.5.3",
     packages=find_packages(exclude=["tests"]),
     description="Prototype-Oriented Programming in Python",
     long_description=README,
