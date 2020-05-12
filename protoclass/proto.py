@@ -97,6 +97,11 @@ def multichain(self, *others):
     >>> catdog.name  # first attribute found will be used upon conflict
     'cat'
 
+    .. deprecated:: 0.5.3
+       `multichain` will be removed in protoclass 1.0.0, and it will
+       be replaced by `chain` because the latter now works with
+       multiple prototypes as well.
+
     """
 
     bases = ()
@@ -223,6 +228,11 @@ def multiclone(*proto_objects):
     'woof'
     >>> catdog.name  # first attribute found will be used upon conflict
     'cat'
+
+    .. deprecated:: 0.5.3
+       `multiclone` will be removed in protoclass 1.0.0, and it will
+       be replaced by `clone` because the latter now works with
+       multiple prototypes as well.
 
     """
 
