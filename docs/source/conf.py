@@ -26,7 +26,7 @@ author = "Armando Herrera"
 release = "0.5.3"
 
 # readthedocs
-master_doct = "index"
+master_doc = "index"
 
 # -- General configuration ---------------------------------------------------
 
