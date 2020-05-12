@@ -19,7 +19,7 @@ def chain(self, other, *others):
     so the order in which they are given matters.
 
     Any change made to parent prototypes will be automatically
-    propagated to this clone.
+    propagated to this prototype.
 
     Parameters
     ----------

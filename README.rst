@@ -40,10 +40,10 @@ API Reference
 +-----------------------------------------------------------------------+
 | **proto(attrs)**                                                      |
 +-----------------------------------------------------------------------+
-| Makes a new proto object with given attributes. When no attributes    |
-| are given, an empty object will be made.                              |
+| Makes a new prototype with given attributes.                          |
+| An empty prototype will be made when no attributes are given.         |
 +-----------------------------------------------------------------------+
-| **proto.chain(self, other)**                                          |
+| **protoclass.proto.chain(self, other, *others)**                      |
 +-----------------------------------------------------------------------+
 | Makes self inherit from a single prototype. Any relationship with     |
 | previous parent prototypes will be removed.                           |
