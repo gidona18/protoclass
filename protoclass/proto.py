@@ -2,31 +2,57 @@
 
 
 def chain(self, other, *others):
-    """Makes self inherit from a single prototype.
+    """Makes self copy attributes from another prototype or
+    multiple other prototypes.
 
-    Any relationship with previous parent prototypes will be removed.
+    Any previous relationship with other parent prototypes will be
+    automatically severed.
+
+    When parent prototypes share attributes with the same name, the
+    first parent prototype that has that attribute will be provide it,
+    so the order in which they are given matters.
+
+    Any change made to parent prototypes will be automatically
+    propagated to this clone.
 
     Parameters
     ----------
-    other : proto
-        Prototype to inherit attributes from.
+    other: proto
+        Prototype to copy attributes from.
+
+    others : list(proto)
+        Prototypes to copy attributes from.
 
     Returns
     -------
     self : proto
-        A proto object that inherits from `other`.
+        A prototype with attributes from `other` and `others`.
 
     Raises
     ------
     TypeError
-        When trying to chain self to self because it generates a cycle.
+        When trying to chain `self` to `self` as it causes a cycle.
 
     Examples
     --------
+    # Chaining a single prototype
     >>> tangerine = proto(color="orange")
     >>> orange = proto().chain(tangerine)
     >>> orange.color
     'orange'
+
+    # Chaining multiple prototypes
+    >>> cat = proto(name="cat", meow="meow")
+    >>> dog = proto(name="dog", bark="woof")
+    >>> catdog = proto(color="orange").multichain(cat, dog)
+    >>> catdog.color
+    'orange'
+    >>> catdog.meow
+    'meow'
+    >>> catdog.bark
+    'woof'
+    >>> catdog.name
+    'cat'
 
     """
 
