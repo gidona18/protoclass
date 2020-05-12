@@ -35,7 +35,6 @@ def chain(self, other, *others):
     bases = (type(other),)
     for other in others:
         bases = bases + (type(other),)
-    print(type(self).__bases__)
     type(self).__bases__ = bases
     return self
 
