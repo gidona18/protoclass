@@ -2,7 +2,7 @@
 
 
 import unittest
-from protoclass import proto, clone, multiclone
+from protoclass import proto, clone
 
 
 # ---------------------------------------------------------------------
@@ -66,7 +66,7 @@ class TestProto(unittest.TestCase):
         orenji.chain(brown_fruit)
         self.assertEqual(orenji.color, "brown")
         try:
-            orenji.fruit_type  # not present in current prototype
+            _ = orenji.fruit_type  # not present in current prototype
             self.assertTrue(False)
         except AttributeError:
             self.assertTrue(True)
@@ -129,6 +129,8 @@ class TestProto(unittest.TestCase):
             cat = proto(meow=lambda self: "meow")
             dog = proto(bark=lambda self: "guau")
             catdog = cat.chain(cat, dog)
+            self.assertEqual(catdog.meow(), "meow")
+            self.assertEqual(catdog.bark(), "guau")
             self.assertTrue(False)
         except TypeError:
             self.assertTrue(True)
