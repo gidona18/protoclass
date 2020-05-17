@@ -8,8 +8,7 @@ import warnings
 
 
 def chain(self, other, *others):
-    """Makes self copy attributes from another prototype or
-    multiple other prototypes.
+    """Makes self copy attributes from another prototype or multiple other prototypes.
 
     Any previous relationship with other parent prototypes will be
     automatically severed.
@@ -162,8 +161,7 @@ def proto(**attrs):
 
 
 def clone(other, *others):
-    """Makes a new prototype by copying attributes from another
-    prototype or multiple other prototypes.
+    """Makes a new prototype by copying attributes from another prototype or multiple other prototypes.
 
     When parent prototypes share attributes with the same name, the
     first parent prototype that has that attribute will be provide it,
