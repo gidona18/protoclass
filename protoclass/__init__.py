@@ -19,4 +19,4 @@ from .proto import multiclone, multichain
 # ---------------------------------------------------------------------
 
 
-__version__ = "0.5.3"
+__version__ = "0.5.4"

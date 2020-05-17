@@ -23,7 +23,7 @@ copyright = "2020, Armando Herrera"
 author = "Armando Herrera"
 
 # The full version, including alpha/beta/rc tags
-release = "0.5.3"
+release = "0.5.4"
 
 # readthedocs
 master_doc = "index"
