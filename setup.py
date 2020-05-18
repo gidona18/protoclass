@@ -8,7 +8,7 @@ setup(
     name="protoclass",
     version="0.5.4",
     packages=find_packages(exclude=["tests"]),
-    description="Prototype-Oriented Programming in Python at the tip of your fingers in a simple. easy-to-use library.",
+    description="Prototype-Oriented Programming in Python at the tip of your fingers in a simple, easy-to-use library.",
     long_description=README,
     url="https://github.com/jellowfish/protoclass",
     license="Apache-2.0",
