@@ -1,6 +1,6 @@
 protoclass - *Prototype-Oriented Programming in Python.*
 ========================================================
-Prototype-Oriented Programming in Python at the tip of your fingers in a simple, easy-to-use library.
+`Prototype-Oriented Programming <https://en.wikipedia.org/wiki/Prototype-based_programming>`_ in Python at the tip of your fingers in a simple, easy-to-use library.
 
 |PyPI-package-version| |PyPI-license| |PyPI-python-versions| |travis-ci| |readthedocs| |PyPI-downloads-month|
  
