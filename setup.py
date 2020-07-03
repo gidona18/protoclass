@@ -6,11 +6,12 @@ README = (HERE / "README.rst").read_text()
 
 setup(
     name="protoclass",
-    version="0.5.4",
+    version="0.5.5",
     packages=find_packages(exclude=["tests"]),
     description="Prototype-Oriented Programming in Python at the tip of your fingers in a simple, easy-to-use library.",
     long_description=README,
-    url="https://github.com/jellowfish/protoclass",
+    long_description_content_type="text/x-rst",
+    url="https://github.com/gidona18/protoclass",
     license="Apache-2.0",
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
@@ -27,5 +28,5 @@ setup(
     ],
     zip_safe=True,
     author="Armando Herrera",
-    author_email="mail@jellowfish.com",
+    author_email="gidona18@estegio.com",
 )
