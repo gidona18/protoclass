@@ -80,5 +80,5 @@ Please make sure to update tests as appropriate.
 .. |travis-ci| image:: https://travis-ci.com/jellowfish/protoclass.svg?branch=master
    :target: https://travis-ci.com/jellowfish/protoclass
 .. |readthedocs| image:: https://readthedocs.org/projects/protoclass-jf/badge/?version=latest
-   :target: http://protoclass-jf.readthedocs.io/?badge=latest
-.. _docs: https://protoclass-jf.readthedocs.io/en/latest/protoclass.html
+   :target: http://protoclass-gidona18.readthedocs.io/?badge=latest
+.. _docs: https://protoclass-gidona18.readthedocs.io/en/latest/protoclass.html
